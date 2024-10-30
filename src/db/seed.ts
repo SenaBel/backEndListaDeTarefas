@@ -1,7 +1,22 @@
 import { client, db } from ".";
-import { tasks } from "./schema";
+import { tasks, user } from "./schema";
 
 async function seed() {
+  await db.delete(user);
+
+  await db.insert(user).values([
+    {
+      name: "Eliz",
+      email: "elizkanep69csscfvkydovnv",
+      password: "12xxx",
+    },
+    {
+      name: "Fernando",
+      email: "fernandoelizkanep69csscfvkydovnv",
+      password: "123456",
+    },
+  ]);
+
   await db.delete(tasks);
 
   await db.insert(tasks).values([

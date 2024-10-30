@@ -8,6 +8,8 @@ import { createTaskRoute } from "./routes/createTask";
 import { getTaskRoute } from "./routes/getTasks";
 import { getTaskPorIdRoute } from "./routes/getTaskPorId";
 import { deleteTaskRoute } from "./routes/deleteTask";
+import { createUserRoute } from "./routes/createUserRoute";
+import { authRoute } from "./routes/authRoute";
 import fastifyCors from "@fastify/cors";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -19,6 +21,8 @@ app.register(fastifyCors, {
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
+app.register(authRoute);
+app.register(createUserRoute);
 app.register(createTaskRoute);
 app.register(getTaskRoute);
 app.register(getTaskPorIdRoute);
