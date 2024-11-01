@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key"; // Use um segredo seguro em produção
+const JWT_SECRET = process.env.JWT_SECRET; // Use um segredo seguro em produção
 
 export interface IUserCredentials {
   email: string;
@@ -35,5 +35,6 @@ export async function authenticateUser({ email, password }: IUserCredentials) {
   const token = jwt.sign({ id: userRecord.id }, JWT_SECRET, {
     expiresIn: "1h",
   });
+
   return token;
 }
