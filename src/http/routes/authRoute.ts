@@ -17,8 +17,8 @@ export const authRoute: FastifyPluginAsyncZod = async (app) => {
       const { email, password }: any = request.body;
 
       try {
-        const token = await authenticateUser({ email, password });
-        reply.send({ token });
+        const data = await authenticateUser({ email, password });
+        reply.send({ data });
       } catch (error) {
         reply.status(401).send({ message: error.message });
       }

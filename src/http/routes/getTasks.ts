@@ -5,7 +5,7 @@ import { authMiddleware } from "../../shared/authMiddleware";
 export const getTaskRoute: FastifyPluginAsyncZod = async (app) => {
   app.get(
     "/listTasks",
-    { preHandler: authMiddleware },
+    //{ preHandler: authMiddleware },
     async (request, reply) => {
       const tasks = await getTask();
       reply.send(tasks);

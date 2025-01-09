@@ -11,6 +11,12 @@ export interface IUserCredentials {
   password: string;
 }
 
+export interface IUserReturn {
+  id: string;
+  name: string;
+  email: string;
+}
+
 export async function authenticateUser({ email, password }: IUserCredentials) {
   // Verificar se o usuário existe
   const existingUser = await db
@@ -36,5 +42,11 @@ export async function authenticateUser({ email, password }: IUserCredentials) {
     expiresIn: "1h",
   });
 
-  return token;
+  const userReturn: IUserReturn = {
+    id: userRecord.id,
+    name: userRecord.name,
+    email: userRecord.email,
+  };
+
+  return { token, user: userReturn };
 }

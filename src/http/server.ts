@@ -11,6 +11,7 @@ import { deleteTaskRoute } from "./routes/deleteTask";
 import { createUserRoute } from "./routes/createUserRoute";
 import { authRoute } from "./routes/authRoute";
 import { meRoute } from "./routes/meRoute";
+import { signoutRoute } from "./routes/signoutRoute";
 import fastifyCors from "@fastify/cors";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -24,6 +25,8 @@ app.setSerializerCompiler(serializerCompiler);
 
 app.register(authRoute);
 app.register(meRoute);
+app.register(signoutRoute);
+
 app.register(createUserRoute);
 app.register(createTaskRoute);
 app.register(getTaskRoute);

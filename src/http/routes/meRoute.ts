@@ -33,7 +33,7 @@ import { authMiddleware } from "../../shared/authMiddleware";
 
 export const meRoute: FastifyPluginAsync = async (app) => {
   app.get(
-    "/me",
+    "/validate-token",
     {
       preHandler: authMiddleware,
     },
